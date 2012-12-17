@@ -98,19 +98,21 @@
         while(i--) {
             thing   =   this.eq(i);
             thing.data(SRC, thing.attr(SRC)).attr(SRC, blankImage).attr(DLL, ZERO);
-            var
-            wrap    =   thing.parent(IFRAMESELECTOR);
-            if(thing.data(RESPONSIVE) && !wrap.length) {
-                wrap    =   responsiveWrap.clone();
-                thing.after(wrap);
-                if(thing.attr(ID)) {
-                    wrap.append(thing).attr(ID, WRAP + thing.attr(ID));
+            if(thing.data(RESPONSIVE)) {
+                var
+                wrap    =   thing.parent(IFRAMESELECTOR);
+                if(!wrap.length) {
+                    wrap    =   responsiveWrap.clone();
+                    thing.after(wrap);
+                    if(thing.attr(ID)) {
+                        wrap.append(thing).attr(ID, WRAP + thing.attr(ID));
+                    }
                 }
+                wrap.css({
+                    'padding-top': ((thing.attr(HEIGHT) / thing.attr(WIDTH)) * 100) + PERCENT
+                });
+                thing.removeAttr(HEIGHT).removeAttr(WIDTH);
             }
-            wrap.css({
-                'padding-top': ((thing.attr(HEIGHT) / thing.attr(WIDTH)) * 100) + PERCENT
-            });
-            thing.removeAttr(HEIGHT).removeAttr(WIDTH);
         }
         swapMedia();
     };
