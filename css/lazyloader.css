@@ -1,0 +1,1 @@
+[data-lazy-loaded]{background:#ccc url('/img/loading.gif') no-repeat 50% 50%}[data-lazy-loaded="1"]{background:transparent}div.responsive-iframe{width:100%;position:relative;padding:0}div.responsive-iframe iframe{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
