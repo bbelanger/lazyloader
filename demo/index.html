@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<title>LazyLoader.js Demo</title>
+		<link rel="stylesheet" href="/css/lazyloader.css">
+		<link rel="stylesheet" href="/css/demo.css">
+	</head>
+	<body>
+		<header id="hd">
+			<h1>LazyLoader.js</h1>
+			<p class="tagline">A jQuery plugin for loading images, embedded videos and social media widgets on demand.</p>
+		</header>
+		
+		<div id="main" role="main">
+			<p><img data-src="/img/flower.jpg" width="640" height="400" alt="Flower"></p>
+			<p><img data-src="/img/flower2.jpg" width="903" height="1024" alt="Flowers"></p>
+			<p><iframe allowfullscreen frameborder="0" width="560" height="350" id="yt-pBK2rfZt32g" data-src="//www.youtube.com/embed/pBK2rfZt32g/?enablejsapi=1&amp;playerapiid=pBK2rfZt32g&amp;wmode=transparent&amp;autohide=0&amp;autoplay=0&amp;fs=1&amp;hd=1&amp;rel=0&amp;showinfo=0&amp;start=&amp;theme=light&amp;cc_load_policy=0"></iframe></p>
+		</div>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="/js/lazyloader.js" data-blank-image="/img/blank.gif"></script>
+		<script charset="utf-8">
+			(function($) {
+				"use strict";
+				
+				$(function() {
+					$('#main [data-src]').lazy();
+				});
+			})(jQuery);
+		</script>
+	</body>
+</html>

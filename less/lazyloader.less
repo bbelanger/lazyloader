@@ -1,0 +1,10 @@
+@backgroundColor: #ccc;
+@backgroundImage: '/img/loading.gif';
+
+[data-lazy-loaded] {
+    background: @backgroundColor url(@backgroundImage) no-repeat 50% 50%;
+}
+
+[data-lazy-loaded="1"] {
+    background: transparent;
+}
