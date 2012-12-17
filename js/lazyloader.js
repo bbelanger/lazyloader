@@ -58,12 +58,13 @@
     };
 }(jQuery, window, document));
 
-(function($, win, SRC, DLL) {
+(function($, win, SRC, DLL, RESPONSIVE, HEIGHT, WIDTH, ID, WRAP, PERCENT, ONE, ZERO, RESPONSIVEIFRAME) {
     "use strict";
     
     var
-    body        =   $('body'),
-    wdw         =   $(win),
+    body            =   $('body'),
+    wdw             =   $(win),
+    responsiveWrap  =   $('<div />').addClass(RESPONSIVEIFRAME),
     top,
     bottom,
     media,
@@ -72,10 +73,12 @@
     thingBottom,
     windowHeight,
     i,
-    blankImage  =   $('script[src$="lazyloader.js"],script[src$="lazyloader.min.js"]').data('blank-image') || '/img/blank.gif';
+    SELECTOR        =   '[' + DLL + '="0"]',
+    IFRAMESELECTOR  =   '.' + RESPONSIVEIFRAME,
+    blankImage      =   $('script[src$="lazyloader.js"],script[src$="lazyloader.min.js"]').data('blank-image') || '/img/blank.gif';
 
     function swapMedia() {
-        media       =   $('[' + DLL + '="0"]');
+        media       =   $(SELECTOR);
         top         =   body.scrollTop();
         windowHeight=   wdw.height();
         bottom      =   top + (windowHeight * 1.25);
@@ -84,9 +87,8 @@
             thing       =   media.eq(i);
             thingTop    =   thing.offset().top;
             thingBottom =   thingTop + (windowHeight / 2);
-            win.console.log(thing, thingTop, thingBottom);
             if(thingTop >= top && thingBottom <= bottom) {
-                thing.attr(DLL, '1').attr(SRC, thing.data(SRC));
+                thing.attr(DLL, ONE).attr(SRC, thing.data(SRC));
             }
         }
     }
@@ -95,11 +97,24 @@
         i       =   this.length;
         while(i--) {
             thing   =   this.eq(i);
-            thing.data(SRC, thing.attr(SRC)).attr(SRC, blankImage).attr(DLL, '0');
+            thing.data(SRC, thing.attr(SRC)).attr(SRC, blankImage).attr(DLL, ZERO);
+            var
+            wrap    =   thing.parent(IFRAMESELECTOR);
+            if(thing.data(RESPONSIVE) && !wrap.length) {
+                wrap    =   responsiveWrap.clone();
+                thing.after(wrap);
+                if(thing.attr(ID)) {
+                    wrap.append(thing).attr(ID, WRAP + thing.attr(ID));
+                }
+            }
+            wrap.css({
+                'padding-top': ((thing.attr(HEIGHT) / thing.attr(WIDTH)) * 100) + PERCENT
+            });
+            thing.removeAttr(HEIGHT).removeAttr(WIDTH);
         }
         swapMedia();
     };
     
     win.watchResize(swapMedia);
     win.watchScroll(swapMedia);
-})(jQuery, window, 'src', 'data-lazy-loaded');
+})(jQuery, window, 'src', 'data-lazy-loaded', 'responsive', 'height', 'width', 'id', 'wrap-', '%', '1', '0', 'responsive-iframe');
