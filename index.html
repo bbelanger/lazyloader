@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Lazyloader : JavaScript library for lazy loading images, embedded videos and social media widgets" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Lazyloader</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/dryan/lazyloader">View on GitHub</a>
+
+          <h1 id="project_title">Lazyloader</h1>
+          <h2 id="project_tagline">JavaScript library for lazy loading images, embedded videos and social media widgets</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/dryan/lazyloader/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/dryan/lazyloader/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>lazyloader</h1>
+
+<p>JavaScript library for lazy loading images, embedded videos and social media widgets</p>
+
+<p>Currently supports images and iframes.</p>
+
+<h2>Usage</h2>
+
+<ol>
+<li>Change the <code>src</code> attribute of your images and iframes to <code>data-src</code>
+</li>
+<li>Add the plugin script file (and jQuery) to your page</li>
+<li>Set the <code>data-blank-image</code> attribute of the plugin script tag to the path of a 1x1 transparent GIF</li>
+<li>Initialize the elements you want to be lazy loaded like <code>$('[data-src]').lazy();</code>
+</li>
+</ol><p>You can optionally include the CSS to style unloaded elements or customize the styling yourself.</p>
+
+<p>Each element needs a <code>width</code> and <code>height</code> attribute to work properly.</p>
+
+<div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;p&gt;&lt;img</span> <span class="na">data-src=</span><span class="s">"/img/flower.jpg"</span> <span class="na">width=</span><span class="s">"640"</span> <span class="na">height=</span><span class="s">"400"</span> <span class="na">alt=</span><span class="s">"Flower"</span><span class="nt">&gt;&lt;/p&gt;</span>
+        <span class="nt">&lt;p&gt;&lt;img</span> <span class="na">data-src=</span><span class="s">"/img/flower2.jpg"</span> <span class="na">width=</span><span class="s">"903"</span> <span class="na">height=</span><span class="s">"1024"</span> <span class="na">alt=</span><span class="s">"Flowers"</span><span class="nt">&gt;&lt;/p&gt;</span>
+        <span class="nt">&lt;p&gt;&lt;iframe</span> <span class="na">allowfullscreen</span> <span class="na">frameborder=</span><span class="s">"0"</span> <span class="na">width=</span><span class="s">"560"</span> <span class="na">height=</span><span class="s">"350"</span> <span class="na">id=</span><span class="s">"yt-pBK2rfZt32g"</span> <span class="na">data-src=</span><span class="s">"//www.youtube.com/embed/pBK2rfZt32g/?enablejsapi=1&amp;amp;playerapiid=pBK2rfZt32g&amp;amp;wmode=transparent&amp;amp;autohide=0&amp;amp;autoplay=0&amp;amp;fs=1&amp;amp;hd=1&amp;amp;rel=0&amp;amp;showinfo=0&amp;amp;start=&amp;amp;theme=light&amp;amp;cc_load_policy=0"</span><span class="nt">&gt;&lt;/iframe&gt;&lt;/p&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/js/lazyloader.js"</span> <span class="na">data-blank-image=</span><span class="s">"/img/blank.gif"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+            <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+                <span class="s2">"use strict"</span><span class="p">;</span>
+
+                <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="nx">$</span><span class="p">(</span><span class="s1">'[data-src]'</span><span class="p">).</span><span class="nx">lazy</span><span class="p">();</span>
+                <span class="p">});</span>
+            <span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Lazyloader maintained by <a href="https://github.com/dryan">dryan</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
